@@ -30,6 +30,7 @@
 		<java.version>17</java.version>
 		<lombok.version>1.18.44</lombok.version>
 		<sonar.organization>ciscotraining</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
