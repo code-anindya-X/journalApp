@@ -1,8 +1,10 @@
 package com.ciscotraining.journalApp.controller;
 
+import com.ciscotraining.journalApp.api.response.WeatherResponse;
 import com.ciscotraining.journalApp.entity.User;
 import com.ciscotraining.journalApp.repository.UserRepository;
 import com.ciscotraining.journalApp.service.UserService;
+import com.ciscotraining.journalApp.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +24,14 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAll();
+    @Autowired
+    private WeatherService weatherService;
 
-    }
+//    @GetMapping
+//    public List<User> getAllUsers() {
+//        return userService.getAll();
+//
+//    }
 
     @PutMapping()
     public ResponseEntity<?> updateUser(@RequestBody User user) {
@@ -44,6 +49,18 @@ public class UserController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         userRepository.deleteByUserName(authentication.getName());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping
+    public ResponseEntity<?> greeetings() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        WeatherResponse weatherResponse = weatherService.getWeather("Kolkata");
+        String greeting = "";
+        if (weatherResponse != null) {
+            greeting = ", Weather Feels Like: " + weatherResponse.getCurrent().getFeelslike();
+        }
+        return new ResponseEntity<>("Hi " + authentication.getName() + greeting, HttpStatus.OK);
     }
 
 }
