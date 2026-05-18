@@ -4,7 +4,6 @@ import com.ciscotraining.journalApp.entity.JournalEntry;
 import com.ciscotraining.journalApp.entity.User;
 import com.ciscotraining.journalApp.repository.JournalEntryRepository;
 import com.ciscotraining.journalApp.repository.UserRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +17,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Slf4j
 public class JournalEntryService {
+    private static final Logger log = LoggerFactory.getLogger(JournalEntryService.class);
+
     @Autowired
     private JournalEntryRepository journalEntryRepository;
 
