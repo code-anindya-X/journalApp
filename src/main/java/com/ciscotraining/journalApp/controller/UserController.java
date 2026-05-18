@@ -22,7 +22,7 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository userRepository; //
 
     @Autowired
     private WeatherService weatherService;

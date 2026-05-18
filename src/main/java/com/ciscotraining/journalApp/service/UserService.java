@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class UserService {
+public class UserService { //CODE WITH INTERFACES
 
     @Autowired
     private UserRepository userRepository;
