@@ -1,4 +1,4 @@
 package com.ciscotraining.journalApp.service;
 
-public class EmailService {
+public class SentimentAnalysisService {
 }
